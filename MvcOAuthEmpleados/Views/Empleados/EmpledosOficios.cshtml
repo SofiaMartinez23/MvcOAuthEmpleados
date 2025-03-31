@@ -1,0 +1,64 @@
+﻿@{
+    List<string> oficios = ViewData["OFICIOS"] as List<string>;
+}
+
+<h1>Empelados Oficios</h1>
+
+<form method="post">
+    <label>Selecciona oficio/s</label>
+    <select name="oficio" size="5" multiple class="form-control">
+        @foreach(string ofi in oficios){
+            <option value="@ofi">@ofi</option>
+        }
+    </select>
+    <input type="text" name="incremento" class="form-control"/>
+    <button name="accion" value="read" class="btn btn-outline-info">Mostrar empleados</button>
+    <button name="accion" value="update" class="btn btn-outline-warning">Incrementar salarios</button>
+</form>
+
+@if(Model != null){
+    <table class="table table-info">
+        <thead>
+            <tr>
+                <th>
+                    IdEmpleado)
+                </th>
+                <th>
+                    Apellido)
+                </th>
+                <th>
+                    Oficio)
+                </th>
+                <th>
+                    Salario)
+                </th>
+                <th>
+                    IdDepartamento)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.IdEmpleado
+                    </td>
+                    <td>
+                        @item.Apellido
+                    </td>
+                    <td>
+                        @item.Oficio
+                    </td>
+                    <td>
+                        @item.Salario
+                    </td>
+                    <td>
+                        @item.IdDepartamento
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
